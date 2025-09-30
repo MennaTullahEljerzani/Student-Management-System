@@ -1,0 +1,5 @@
+# Created at 2025-09-30T21:29:07.828
+Boot Manifest-JAR contains absolute paths in classpath 'D:\Giza systems\Student Management System\Student Management System\Student-Management-System\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+

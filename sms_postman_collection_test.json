@@ -1,0 +1,186 @@
+{
+  "info": {
+    "name": "SMS API Collection",
+    "_postman_id": "12345678-aaaa-bbbb-cccc-1234567890ab",
+    "description": "Postman collection for testing Student Management System APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8081"
+    }
+  ],
+  "item": [
+    {
+      "name": "Students",
+      "item": [
+        {
+          "name": "Register Student",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"gpa\": 3.5\n}"
+            },
+            "url": "{{baseUrl}}/api/students"
+          }
+        },
+        {
+          "name": "Get Student by ID",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/students/1" }
+        },
+        {
+          "name": "Get All Students",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/students" }
+        },
+        {
+          "name": "Get Students Sorted by GPA",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/students/sorted-by-gpa" }
+        },
+        {
+          "name": "Update Student",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Name\",\n  \"email\": \"updated@example.com\",\n  \"gpa\": 3.8\n}"
+            },
+            "url": "{{baseUrl}}/api/students/1"
+          }
+        },
+        {
+          "name": "Delete Student",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/api/students/1" }
+        }
+      ]
+    },
+    {
+      "name": "Courses",
+      "item": [
+        {
+          "name": "Create Course",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Math 101\",\n  \"description\": \"Basic Mathematics\"\n}"
+            },
+            "url": "{{baseUrl}}/api/courses"
+          }
+        },
+        {
+          "name": "Get Course by ID",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/courses/1" }
+        },
+        {
+          "name": "Get All Courses",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/courses" }
+        },
+        {
+          "name": "Update Course",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Course\",\n  \"description\": \"Updated Description\"\n}"
+            },
+            "url": "{{baseUrl}}/api/courses/1"
+          }
+        },
+        {
+          "name": "Delete Course",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/api/courses/1" }
+        },
+        {
+          "name": "Enroll Student in Course",
+          "request": { "method": "POST", "url": "{{baseUrl}}/api/courses/1/enroll/1" }
+        },
+        {
+          "name": "Unenroll Student from Course",
+          "request": { "method": "POST", "url": "{{baseUrl}}/api/courses/1/unenroll/1" }
+        },
+        {
+          "name": "Get Course Students (with optional minGpa)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/courses/1/students?minGpa=3.0"
+          }
+        },
+        {
+          "name": "Assign Instructor to Course",
+          "request": { "method": "POST", "url": "{{baseUrl}}/api/courses/1/assign-instructor/1" }
+        },
+        {
+          "name": "Unassign Instructor from Course",
+          "request": { "method": "POST", "url": "{{baseUrl}}/api/courses/1/unassign-instructor" }
+        }
+      ]
+    },
+    {
+      "name": "Instructors",
+      "item": [
+        {
+          "name": "Create Instructor",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Dr. Smith\",\n  \"email\": \"smith@example.com\"\n}"
+            },
+            "url": "{{baseUrl}}/api/instructors"
+          }
+        },
+        {
+          "name": "Get Instructor by ID",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/instructors/1" }
+        },
+        {
+          "name": "Get All Instructors",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/instructors" }
+        },
+        {
+          "name": "Update Instructor",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Instructor\",\n  \"email\": \"updated@example.com\"\n}"
+            },
+            "url": "{{baseUrl}}/api/instructors/1"
+          }
+        },
+        {
+          "name": "Delete Instructor",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/api/instructors/1" }
+        }
+      ]
+    },
+    {
+      "name": "Grades",
+      "item": [
+        {
+          "name": "Assign Grade",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/grades/assign?studentId=1&courseId=1&score=90&term=Fall2025"
+          }
+        },
+        {
+          "name": "Get Student Report",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/grades/report/1" }
+        },
+        {
+          "name": "Get Student GPA",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/grades/gpa/1" }
+        }
+      ]
+    }
+  ]
+}
